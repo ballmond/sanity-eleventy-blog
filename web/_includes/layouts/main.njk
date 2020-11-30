@@ -6,10 +6,7 @@ headerClass: elv-header-default
 ---
 {% include "header.njk" %}
 
-{% set style%}
-    {% imageUrlFor metadata.heroImage, 1000 %}
-{% endset %}
-<div class="elv-hero elv-externalexempt jesska" style="background-image:url({{ style }}); height: 41.59vw; width: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center center; position: relative; background-size: cover;"><span class="sr-only">Eleventy</span></div>
+{% include "hero.njk" %}
 
 {#
 {% if config.outdated -%}

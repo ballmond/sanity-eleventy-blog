@@ -1,20 +1,16 @@
     <header class="elv-layout elv-layout-full elv-header{% if headerClass %} {{ headerClass }}{% endif %}">
+      {#
       <div class="elv-header-c">
         <a href="{{ '/' | url }}"><img src="{% imageUrlFor metadata.brandLogo, 100 %}" alt="{{ metadata.brandLogo.alt }}"></a>
-        {#
-        {% if metadata.heroImage %}
-        {% set style%}
-          {% imageUrlFor metadata.heroImage, 1000 %}
-        {% endset %}
-        <div class="elv-hero elv-externalexempt" style="background-image:url({{ style }})"><span class="sr-only">Eleventy</span></div>
-        #}
-
-        {#
-        <picture class="elv-possum-pic">
-				  <source srcset="{{ style }}" type="image/webp">
-				  <img src="{{ style }}" class="elv-possum" alt="The possum is Eleventy’s mascot" loading="lazy">
-			  </picture>
-        {% endif %}
-        #}
       </div>
+      #}
+      <a href="{{"/" | url}}">
+        <h1 class="elv-hed">{{ metadata.title | orphanWrap | safe }}</h1>
+      </a>
+          <div class="elv-nav-header">
+            <ul class="elv-nav lo">
+              <li class="elv-nav-item lo-c"><a href="{{ "/about-us/" | url }}" class="elv-externalexempt">about us</a></li>
+              <li class="elv-nav-item lo-c"><a href="{{ "/docs/search/" | url }}" class="elv-nav-light">Search</a></li>
+            </ul>
+          </div><!-- /elv-nav-header -->
     </header>

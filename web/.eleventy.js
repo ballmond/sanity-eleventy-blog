@@ -1,10 +1,19 @@
+const navigationPlugin = require("@11ty/eleventy-navigation");
 const urlFor = require("./utils/imageUrl");
 const { DateTime } = require("luxon");
 const util = require("util");
 const CleanCSS = require("clean-css");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addShortcode("imageUrlFor", (image, width = "400") => {
+  const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+  module.exports = function (eleventyConfig) {
+    eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  };
+
+  eleventyConfig.addShortcode("imageUrlFor", (image, width = "400", blur = 0) => {
+    if (blur > 0) {
+      return urlFor(image).blur(blur).width(width).auto("format").url();
+    }
     return urlFor(image).width(width).auto("format").url();
     // return urlFor(image).width(width).auto("format");
   });
@@ -36,6 +45,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css/fonts");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("favicon.ico");
+
+  eleventyConfig.addFilter("orphanWrap", (str) => {
+    let splitSpace = str.split(" ");
+    let after = "";
+    if (splitSpace.length > 2) {
+      after += " ";
+
+      // TODO strip HTML from this?
+      let lastWord = splitSpace.pop();
+      let secondLastWord = splitSpace.pop();
+
+      after += `${secondLastWord}&nbsp;${lastWord}`;
+    }
+
+    return splitSpace.join(" ") + after;
+  });
 
   // let markdownIt = require("markdown-it");
   // let markdownItAnchor = require("markdown-it-anchor");
