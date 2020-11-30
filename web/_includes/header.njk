@@ -1,0 +1,20 @@
+    <header class="elv-layout elv-layout-full elv-header{% if headerClass %} {{ headerClass }}{% endif %}">
+      <div class="elv-header-c">
+        <a href="{{ '/' | url }}"><img src="{% imageUrlFor metadata.brandLogo, 100 %}" alt="{{ metadata.brandLogo.alt }}"></a>
+        {#
+        {% if metadata.heroImage %}
+        {% set style%}
+          {% imageUrlFor metadata.heroImage, 1000 %}
+        {% endset %}
+        <div class="elv-hero elv-externalexempt" style="background-image:url({{ style }})"><span class="sr-only">Eleventy</span></div>
+        #}
+
+        {#
+        <picture class="elv-possum-pic">
+				  <source srcset="{{ style }}" type="image/webp">
+				  <img src="{{ style }}" class="elv-possum" alt="The possum is Eleventy’s mascot" loading="lazy">
+			  </picture>
+        {% endif %}
+        #}
+      </div>
+    </header>

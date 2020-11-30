@@ -1,0 +1,41 @@
+---
+title: TODO dynamic title
+layout: layouts/base.njk
+templateClass: elv-default
+headerClass: elv-header-default
+---
+{% include "header.njk" %}
+
+{% set style%}
+    {% imageUrlFor metadata.heroImage, 1000 %}
+{% endset %}
+<div class="elv-hero elv-externalexempt jesska" style="background-image:url({{ style }}); height: 41.59vw; width: 100%; background-size: auto 100%; background-repeat: no-repeat; background-position: center center; position: relative; background-size: cover;"><span class="sr-only">Eleventy</span></div>
+
+{#
+{% if config.outdated -%}
+<div class="elv-callout elv-callout-warn elv-callout-sticky">This is an <strong>older version of Eleventy</strong>. Go to the <a href="https://www.11ty.dev/docs/">newest Eleventy docs</a> (current path: <a href="https://www.11ty.dev{{ page.url }}"><code>{{ page.url }}</code></a>) or the <a href="https://www.11ty.dev/docs/versions/">full release history</a>.</div>
+{% endif -%}
+{% if config.prerelease -%}
+<div class="elv-callout elv-callout-info elv-callout-sticky">This documentation is for an upcoming version of Eleventy. Go to the <a href="https://www.11ty.dev/docs/">latest stable version of Eleventy docs</a> or check out the <a href="https://www.11ty.dev/docs/versions/">full release history.</a></div>
+{% endif -%}
+#}
+
+<main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
+	{{ content | safe }}
+</main>
+
+{#
+<footer class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
+    {% if ignoreSupporters %}{% else %}
+        <h2 id="eleventy-is-supported-by">Eleventy is <a href="/docs/supporters/">supported</a> by… <a class="direct-link" href="#eleventy-is-supported-by">#</a></h2>
+        {% include "supporters.njk" %}
+    {% endif %}
+    {%- if ignoreGitHubButtons %}{% else %}
+        <div class="elv-callout">
+            {% include "star-on-github.njk" %}
+        </div>
+    {%- endif %}
+
+    {% include "footer-nav.njk" %}
+</footer>
+#}

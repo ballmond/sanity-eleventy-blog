@@ -5,7 +5,8 @@ const CleanCSS = require("clean-css");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("imageUrlFor", (image, width = "400") => {
-    return urlFor(image).width(width).auto("format");
+    return urlFor(image).width(width).auto("format").url();
+    // return urlFor(image).width(width).auto("format");
   });
 
   eleventyConfig.addShortcode("croppedUrlFor", (image, width, height) => {
@@ -30,8 +31,28 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
+  eleventyConfig.addPassthroughCopy("_redirects");
+  eleventyConfig.addPassthroughCopy("netlify-email");
+  eleventyConfig.addPassthroughCopy("css/fonts");
+  eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
+
+  // let markdownIt = require("markdown-it");
+  // let markdownItAnchor = require("markdown-it-anchor");
+  // let options = {
+  //   html: true,
+  //   breaks: true,
+  //   linkify: true,
+  // };
+  // let opts = {
+  //   permalink: true,
+  //   permalinkClass: "direct-link",
+  //   permalinkSymbol: "#",
+  // };
+
+  // eleventyConfig.setLibrary("md", markdownIt(options).use(markdownItAnchor, opts));
+
   let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
   let options = {
     html: true,
     breaks: true,
@@ -43,7 +64,7 @@ module.exports = function (eleventyConfig) {
     permalinkSymbol: "#",
   };
 
-  eleventyConfig.setLibrary("md", markdownIt(options).use(markdownItAnchor, opts));
+  eleventyConfig.setLibrary("md", markdownIt(options));
 
   eleventyConfig.addFilter("markdownify", function (value) {
     const md = new markdownIt(options);

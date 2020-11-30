@@ -1,10 +1,12 @@
-const groq = require('groq')
-const client = require('../utils/sanityClient')
-module.exports =  async function() {
+const groq = require("groq");
+const client = require("../utils/sanityClient");
+module.exports = async function () {
   return await client.fetch(groq`
     *[_id == "siteSettings"]{
       ...,
+      brandLogo->,
+      heroImage->,
       author->
     }[0]
-  `)
-}
+  `);
+};
