@@ -1,9 +1,15 @@
-<ol reversed class="postlist" style="counter-reset: start-from {{ postslist.length + 1 }}">
+<ol reversed class="postlist">
 {% for post in postslist | reverse %}
   {% set currentPost = post.data.post %}
   <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-    <a href="{{ post.url | url }}" class="postlist-link">{% if currentPost.title %}{{ currentPost.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-    <time class="postlist-date" datetime="{{ currentPost.publishedAt }}">{{ currentPost.publishedAt|readableDate }}</time>
+    
+    <a href="{{ post.url | url }}"><img src="{% croppedUrlFor currentPost.mainImage, 600, 600 %}" alt="{{ currentPost.mainImage.alt }}"></a>
+    
+    <div class="post-content">
+      <h2><a href="{{ post.url | url }}" class="postlist-link">{% if currentPost.title %}{{ currentPost.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a></h2>
+      <time class="postlist-date" datetime="{{ currentPost.publishedAt }}">{{ currentPost.publishedAt|readableDate }}</time>
+      {{ currentPost.excerpt | markdownify | safe }}
+    </div>
   </li>
 {% endfor %}
 </ol>
