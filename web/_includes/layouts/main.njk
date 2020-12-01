@@ -4,7 +4,10 @@ layout: layouts/base.njk
 templateClass: elv-default
 headerClass: elv-header-default
 ---
-{% include "header.njk" %}
+
+{% set heroImage %}
+    {% imageUrlFor metadata.heroImage %}
+{% endset %}
 
 {% include "hero.njk" %}
 

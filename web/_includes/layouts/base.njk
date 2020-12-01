@@ -35,9 +35,9 @@
     {%- set css %}
       {% include "index.css" %}
       {% include 'components/navigation.css' %}
+      {% include 'components/layout.css' %}
       {#
       {% include 'components/font-titles.css' %}
-      {% include 'components/layout.css' %}
       {% include 'components/toc.css' %}
       {% include 'components/callout.css' %}
       {% include 'components/breadcrumb.css' %}
@@ -52,6 +52,7 @@
       {{ css | cssmin | safe }}
     </style>
   </head>
+  {% include "header.njk" %}
   <body>
       {{ content | safe }}
   </body>

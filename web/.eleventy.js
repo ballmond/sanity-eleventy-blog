@@ -1,21 +1,35 @@
-const navigationPlugin = require("@11ty/eleventy-navigation");
 const urlFor = require("./utils/imageUrl");
 const { DateTime } = require("luxon");
 const util = require("util");
 const CleanCSS = require("clean-css");
 
+const navigationPlugin = require("@11ty/eleventy-navigation");
+const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(syntaxHighlightPlugin, {
+    templateFormats: ["md", "njk"],
+    init: function ({ Prism }) {
+      Prism.languages.markdown = Prism.languages.extend("markup", {
+        frontmatter: {
+          pattern: /^---[\s\S]*?^---$/m,
+          greedy: true,
+          inside: Prism.languages.yaml,
+        },
+      });
+    },
+  });
+
   const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
   module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigationPlugin);
   };
 
-  eleventyConfig.addShortcode("imageUrlFor", (image, width = "400", blur = 0) => {
+  eleventyConfig.addShortcode("imageUrlFor", (image, blur = 0) => {
     if (blur > 0) {
-      return urlFor(image).blur(blur).width(width).auto("format").url();
+      return urlFor(image).blur(blur).auto("format").url();
     }
-    return urlFor(image).width(width).auto("format").url();
-    // return urlFor(image).width(width).auto("format");
+    return urlFor(image).auto("format").url();
   });
 
   eleventyConfig.addShortcode("croppedUrlFor", (image, width, height) => {
@@ -45,6 +59,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css/fonts");
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("favicon.ico");
+
+  eleventyConfig.addFilter("newsDate", (dateObj, format = "yyyy LLLL dd") => {
+    if (typeof dateObj === "number") {
+      dateObj = new Date(dateObj);
+    }
+    return DateTime.fromJSDate(dateObj).toFormat(format);
+  });
 
   eleventyConfig.addFilter("orphanWrap", (str) => {
     let splitSpace = str.split(" ");
@@ -96,7 +117,7 @@ module.exports = function (eleventyConfig) {
     return md.render(value);
   });
   return {
-    templateFormats: ["md", "njk", "html", "liquid"],
+    templateFormats: ["html", "njk", "md", "11ty.js"],
 
     // If your site lives in a different subdirectory, change this.
     // Leading or trailing slashes are all normalized away, so don’t worry about it.
@@ -104,7 +125,7 @@ module.exports = function (eleventyConfig) {
     // This is only used for URLs (it does not affect your file structure)
     pathPrefix: "/",
 
-    markdownTemplateEngine: "liquid",
+    markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
     passthroughFileCopy: true,
