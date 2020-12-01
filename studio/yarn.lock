@@ -898,7 +898,7 @@
   version "1.1.2"
   resolved "https://registry.npmjs.org/@sanity/asset-utils/-/asset-utils-1.1.2.tgz#d6b4b875bee4189cb56f274a7fb5494174463cb2"
 
-"@sanity/base@2.0.9", "@sanity/base@^2.0.0":
+"@sanity/base@2.0.9", "@sanity/base@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/base/-/base-2.0.9.tgz#d50dfcd884ebcb01f2bbf3db2ab9260986f2956c"
   dependencies:
@@ -969,7 +969,7 @@
     fs-extra "^6.0.1"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@^2.0.0":
+"@sanity/cli@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/cli/-/cli-2.0.9.tgz#1ba41179b58c7302d2bc144e874e2676a766d128"
 
@@ -1001,7 +1001,7 @@
   version "1.0.0"
   resolved "https://registry.npmjs.org/@sanity/color/-/color-1.0.0.tgz#6cc44d4a8f6da4567828f52f141deed4d17aa31e"
 
-"@sanity/components@2.0.9", "@sanity/components@^2.0.0":
+"@sanity/components@2.0.9", "@sanity/components@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/components/-/components-2.0.9.tgz#ce4040cd41d4d1f82b49e099b16bac2a8cbe035a"
   dependencies:
@@ -1027,7 +1027,7 @@
     react-split-pane "^0.1.84"
     rxjs "^6.5.3"
 
-"@sanity/core@^2.0.0":
+"@sanity/core@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/core/-/core-2.0.9.tgz#b12243da78f988db84850b9826aeffa8e9c4ba34"
   dependencies:
@@ -1100,7 +1100,7 @@
     postcss-value-parser "^3.3.0"
     source-list-map "^2.0.0"
 
-"@sanity/dashboard@^2.0.0":
+"@sanity/dashboard@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/dashboard/-/dashboard-2.0.9.tgz#c9a4820fbb435e1669310bafe29a0be971ad01cc"
   dependencies:
@@ -1115,7 +1115,7 @@
     "@sanity/generate-help-url" "2.0.9"
     lodash "^4.17.15"
 
-"@sanity/default-layout@^2.0.0":
+"@sanity/default-layout@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/default-layout/-/default-layout-2.0.9.tgz#a29ae5140d7703175833dca5a3e17888c70b030f"
   dependencies:
@@ -1130,7 +1130,7 @@
     react-props-stream "^1.0.0"
     rxjs "^6.5.3"
 
-"@sanity/default-login@^2.0.0":
+"@sanity/default-login@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/default-login/-/default-login-2.0.9.tgz#7895f92692f36a886d4cc09f406486c478c7cd22"
   dependencies:
@@ -1138,7 +1138,7 @@
     prop-types "^15.6.0"
     rxjs "^6.5.3"
 
-"@sanity/desk-tool@^2.0.0":
+"@sanity/desk-tool@^2.0.9":
   version "2.0.9"
   resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.0.9.tgz#1cc978db124d62fe33e6285716efff0f2e88b54a"
   dependencies:
@@ -2004,7 +2004,7 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-eslint@^10.0.1:
+babel-eslint@^10.1.0:
   version "10.1.0"
   resolved "https://registry.npmjs.org/babel-eslint/-/babel-eslint-10.1.0.tgz#6968e568a910b78fb3779cdd8b6ac2f479943232"
   dependencies:
@@ -3686,7 +3686,7 @@ eslint-plugin-es@^1.4.1:
     eslint-utils "^1.4.2"
     regexpp "^2.0.1"
 
-eslint-plugin-import@^2.17.3:
+eslint-plugin-import@^2.22.1:
   version "2.22.1"
   resolved "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz#0896c7e6a0cf44109a2d97b95903c2bb689d7702"
   dependencies:
@@ -3704,7 +3704,7 @@ eslint-plugin-import@^2.17.3:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
-eslint-plugin-node@^9.1.0:
+eslint-plugin-node@^9.2.0:
   version "9.2.0"
   resolved "https://registry.npmjs.org/eslint-plugin-node/-/eslint-plugin-node-9.2.0.tgz#b1911f111002d366c5954a6d96d3cd5bf2a3036a"
   dependencies:
@@ -3719,7 +3719,7 @@ eslint-plugin-promise@^4.1.1:
   version "4.2.1"
   resolved "https://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-4.2.1.tgz#845fd8b2260ad8f82564c1222fce44ad71d9418a"
 
-eslint-plugin-react@^7.13.0:
+eslint-plugin-react@^7.21.5:
   version "7.21.5"
   resolved "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-7.21.5.tgz#50b21a412b9574bfe05b21db176e8b7b3b15bff3"
   dependencies:
@@ -3735,7 +3735,7 @@ eslint-plugin-react@^7.13.0:
     resolve "^1.18.1"
     string.prototype.matchall "^4.0.2"
 
-eslint-plugin-standard@^4.0.0:
+eslint-plugin-standard@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/eslint-plugin-standard/-/eslint-plugin-standard-4.1.0.tgz#0c3bf3a67e853f8bbbc580fb4945fbf16f41b7c5"
 
