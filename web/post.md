@@ -7,7 +7,7 @@ pagination:
   data: posts
   size: 1
   addAllPagesToCollections: true
-permalink: posts/{{ post.slug.current | slug }}/index.html
+permalink: news/{{ post.slug.current | slug }}/index.html
 ---
 
 # {{ post.title }}
