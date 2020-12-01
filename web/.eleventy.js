@@ -67,6 +67,17 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat(format);
   });
 
+  eleventyConfig.addFilter("publishedAt", (dateObj, format = "yyyy LLLL dd") => {
+    if (typeof dateObj === "number") {
+      dateObj = new Date(dateObj);
+    }
+    return DateTime.fromISO(dateObj).toFormat(format);
+  });
+
+  eleventyConfig.addFilter("pop", (arr, num = 3) => {
+    return arr.slice(0, num);
+  });
+
   eleventyConfig.addFilter("orphanWrap", (str) => {
     let splitSpace = str.split(" ");
     let after = "";
