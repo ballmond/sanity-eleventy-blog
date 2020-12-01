@@ -20,7 +20,7 @@ export default {
       type: 'array',
       title: 'Keywords',
       description: 'Add keywords that describes your blog.',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       options: {
         layout: 'tags'
       }
@@ -30,7 +30,17 @@ export default {
       type: 'reference',
       description: 'Publish an author and set a reference to them here.',
       title: 'Author',
-      to: [{type: 'author'}]
+      to: [{ type: 'author' }]
+    },
+    {
+      name: 'heroImage',
+      type: 'mainImage',
+      title: 'Hero Image'
+    },
+    {
+      name: 'brandLogo',
+      type: 'mainImage',
+      title: 'Brand Logo'
     }
   ]
 }
