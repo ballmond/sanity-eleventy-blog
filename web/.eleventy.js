@@ -1,10 +1,13 @@
+const slugify = require("slugify");
 const urlFor = require("./utils/imageUrl");
+var getYouTubeID = require("get-youtube-id");
 const { DateTime } = require("luxon");
 const util = require("util");
 const CleanCSS = require("clean-css");
 
 const navigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { get } = require("https");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlightPlugin, {
@@ -78,6 +81,10 @@ module.exports = function (eleventyConfig) {
     return arr.slice(0, num);
   });
 
+  eleventyConfig.addFilter("youtubeId", (url) => {
+    return getYouTubeID(url);
+  });
+
   eleventyConfig.addFilter("orphanWrap", (str) => {
     let splitSpace = str.split(" ");
     let after = "";
@@ -94,34 +101,65 @@ module.exports = function (eleventyConfig) {
     return splitSpace.join(" ") + after;
   });
 
-  // let markdownIt = require("markdown-it");
-  // let markdownItAnchor = require("markdown-it-anchor");
-  // let options = {
-  //   html: true,
-  //   breaks: true,
-  //   linkify: true,
-  // };
-  // let opts = {
-  //   permalink: true,
-  //   permalinkClass: "direct-link",
-  //   permalinkSymbol: "#",
-  // };
-
-  // eleventyConfig.setLibrary("md", markdownIt(options).use(markdownItAnchor, opts));
-
+  /* Markdown */
   let markdownIt = require("markdown-it");
-  let options = {
+  let markdownItAnchor = require("markdown-it-anchor");
+  let markdownItToc = require("markdown-it-table-of-contents");
+
+  function removeExtraText(s) {
+    let newStr = String(s).replace(/New\ in\ v\d+\.\d+\.\d+/, "");
+    newStr = newStr.replace(/Coming\ soon\ in\ v\d+\.\d+\.\d+/, "");
+    newStr = newStr.replace(/⚠️/g, "");
+    newStr = newStr.replace(/[?!]/g, "");
+    newStr = newStr.replace(/<[^>]*>/g, "");
+    return newStr;
+  }
+
+  function markdownItSlugify(s) {
+    return slugify(removeExtraText(s), { lower: true, remove: /[:’'`,]/g });
+  }
+
+  let mdIt = markdownIt({
     html: true,
     breaks: true,
     linkify: true,
-  };
-  let opts = {
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#",
-  };
+  })
+    .use(markdownItAnchor, {
+      permalink: true,
+      slugify: markdownItSlugify,
+      permalinkBefore: false,
+      permalinkClass: "direct-link",
+      permalinkSymbol: "#",
+      level: [1, 2, 3, 4],
+    })
+    .use(markdownItToc, {
+      includeLevel: [2, 3],
+      slugify: markdownItSlugify,
+      format: function (heading) {
+        return removeExtraText(heading);
+      },
+      transformLink: function (link) {
+        // remove backticks from markdown code
+        return link.replace(/\%60/g, "");
+      },
+    });
 
-  eleventyConfig.setLibrary("md", markdownIt(options));
+  mdIt.linkify.tlds(".io", false);
+  eleventyConfig.setLibrary("md", mdIt);
+
+  eleventyConfig.addPairedShortcode("callout", function (content, level = "warn", format = "html") {
+    if (format === "md") {
+      content = md.renderInline(content);
+    }
+    return `<div class="elv-callout elv-callout-${level}">${content}</div>`;
+  });
+
+  eleventyConfig.addShortcode("emoji", function (emoji, alt = "") {
+    return (
+      `<span aria-hidden="true" class="emoji">${emoji}</span>` +
+      (alt ? `<span class="sr-only">${alt}</span>` : "")
+    );
+  });
 
   eleventyConfig.addFilter("markdownify", function (value) {
     const md = new markdownIt(options);
