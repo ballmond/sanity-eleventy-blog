@@ -8,7 +8,7 @@ headerClass: elv-header-default
     {% imageUrlFor metadata.heroImage %}
 {% endset %}
 
-{% include "hero.njk" %}
+{% if metadata.heroImage %} {% include "hero.njk" %} {% endif %}
 
 {#
 {% if config.outdated -%}

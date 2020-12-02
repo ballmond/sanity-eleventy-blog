@@ -40,3 +40,17 @@ Posted {{ item.data.post.publishedAt | publishedAt }}
 {%- endif %}
 
 ## Latest [Sermons]({{ '/sermons/' | url }})
+
+{%- set sermons = collections.sermons | reverse | pop(3) %}
+{%- if sermons %}
+{% for sermon in sermons %}
+
+### [{{ sermon.data.sermon.title }}]({{ sermon.url }})
+
+<h5>{{ sermon.data.sermon.excerpt }}</h5>
+
+{% if sermon.data.sermon.audioUrl %}[Listen]({{ sermon.data.sermon.audioUrl | url }}) {% endif %} {% if sermon.data.sermon.videoUrl | url %}[Watch]({{ sermon.data.sermon.videoUrl }}) {% endif %}
+
+Posted {{ sermon.data.sermon.publishedAt | publishedAt }}
+{% endfor %}
+{%- endif %}

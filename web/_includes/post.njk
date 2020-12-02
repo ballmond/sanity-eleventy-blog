@@ -2,11 +2,12 @@
 layout: layouts/base.njk
 headerClass: elv-header-default
 ---
+
 {% set heroImage %}
     {% imageUrlFor post.mainImage.asset %}
 {% endset %}
 
-{% if heroImage %} {% include "hero.njk" %} {% endif %}
+{% if post.mainImage.asset %} {% include "hero.njk" %} {% endif %}
 
 {#
 <main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
