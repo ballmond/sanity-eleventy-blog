@@ -1,5 +1,8 @@
 ---
 layout: post.njk
+eleventyNavigation:
+  key: Sermons
+  parent: Home
 ---
 
 {%- set sermons = collections.sermons | reverse %}

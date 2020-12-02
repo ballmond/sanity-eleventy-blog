@@ -1,5 +1,7 @@
 ---
 layout: layouts/main.njk
+eleventyNavigation:
+  key: Home
 ---
 
 # Welcome to {{ metadata.title }}

@@ -1,5 +1,8 @@
 ---
 layout: post.njk
+eleventyNavigation:
+  key: News
+  parent: Home
 ---
 
 {%- set news = collections.news | reverse %}
