@@ -21,6 +21,8 @@ headerClass: elv-header-default
 #}
 
 <main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
+  {% include "components/toc.njk" %}
+
   <article>
     {{ content | safe }}
   </article>

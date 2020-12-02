@@ -1,5 +1,8 @@
 ---
-layout: layouts/main.njk
+layout: post.njk
+eleventyNavigation:
+  key: What We Believe
+  parent: About Us
 ---
 
 # What We Believe

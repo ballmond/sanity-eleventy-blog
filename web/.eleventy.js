@@ -5,7 +5,8 @@ const { DateTime } = require("luxon");
 const util = require("util");
 const CleanCSS = require("clean-css");
 
-const navigationPlugin = require("@11ty/eleventy-navigation");
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { get } = require("https");
 
@@ -23,10 +24,7 @@ module.exports = function (eleventyConfig) {
     },
   });
 
-  const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-  module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  };
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   eleventyConfig.addShortcode("imageUrlFor", (image, blur = 0) => {
     if (blur > 0) {
@@ -99,6 +97,11 @@ module.exports = function (eleventyConfig) {
     }
 
     return splitSpace.join(" ") + after;
+  });
+
+  eleventyConfig.addCollection("sidebarNav", function (collection) {
+    // filter out excludeFromSidebar options
+    return collection.getAll().filter((item) => (item.data || {}).excludeFromSidebar !== true);
   });
 
   /* Markdown */
