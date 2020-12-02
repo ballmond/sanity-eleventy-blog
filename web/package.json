@@ -26,6 +26,7 @@
     "markdown-it-anchor": "^5.3.0"
   },
   "dependencies": {
-    "@11ty/eleventy-cache-assets": "^2.0.3"
+    "@11ty/eleventy-cache-assets": "^2.0.3",
+    "get-youtube-id": "^1.0.1"
   }
 }

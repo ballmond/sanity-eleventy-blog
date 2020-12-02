@@ -1,10 +1,12 @@
 const urlFor = require("./utils/imageUrl");
+var getYouTubeID = require("get-youtube-id");
 const { DateTime } = require("luxon");
 const util = require("util");
 const CleanCSS = require("clean-css");
 
 const navigationPlugin = require("@11ty/eleventy-navigation");
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const { get } = require("https");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlightPlugin, {
@@ -76,6 +78,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("pop", (arr, num = 3) => {
     return arr.slice(0, num);
+  });
+
+  eleventyConfig.addFilter("youtubeId", (url) => {
+    return getYouTubeID(url);
   });
 
   eleventyConfig.addFilter("orphanWrap", (str) => {

@@ -49,7 +49,7 @@ Posted {{ item.data.post.publishedAt | publishedAt }}
 
 <h5>{{ sermon.data.sermon.excerpt }}</h5>
 
-{% if sermon.data.sermon.audioUrl %}[Listen]({{ sermon.data.sermon.audioUrl | url }}) {% endif %} {% if sermon.data.sermon.videoUrl | url %}[Watch]({{ sermon.data.sermon.videoUrl }}) {% endif %}
+{% if sermon.data.sermon.audioUrl %}<a href="{{ sermon.data.sermon.audioUrl | url }}" target="_blank">Listen</a>{% endif %} {% if sermon.data.sermon.videoUrl %}<a href="{{ sermon.data.sermon.videoUrl | url }}" target="_blank">Watch</a>{% endif %}
 
 Posted {{ sermon.data.sermon.publishedAt | publishedAt }}
 {% endfor %}
