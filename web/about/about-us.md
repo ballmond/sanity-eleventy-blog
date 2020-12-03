@@ -3,6 +3,7 @@ layout: layouts/main.njk
 eleventyNavigation:
   key: About Us
   parent: Home
+  order: 1
 ---
 
 # What We Believe
