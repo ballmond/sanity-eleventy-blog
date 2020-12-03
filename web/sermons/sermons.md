@@ -3,6 +3,7 @@ layout: post.njk
 eleventyNavigation:
   key: Sermons
   parent: Home
+  order: 3
 ---
 
 {%- set sermons = collections.sermons | reverse %}

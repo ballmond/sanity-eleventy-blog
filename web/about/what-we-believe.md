@@ -3,6 +3,7 @@ layout: post.njk
 eleventyNavigation:
   key: What We Believe
   parent: About Us
+  order: 1
 ---
 
 # What We Believe

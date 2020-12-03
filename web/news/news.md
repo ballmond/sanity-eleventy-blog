@@ -3,6 +3,7 @@ layout: post.njk
 eleventyNavigation:
   key: News
   parent: Home
+  order: 2
 ---
 
 {%- set news = collections.news | reverse %}
