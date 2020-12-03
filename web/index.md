@@ -33,12 +33,7 @@ Blue Bell, PA 19422
 {%- set news = collections.news | reverse | pop(3) %}
 {%- if news %}
 {% for item in news %}
-
-### [{{ item.data.post.title }}]({{ item.url }})
-
-<h5>{{ item.data.post.excerpt }}</h5>
-
-Posted {{ item.data.post.publishedAt | publishedAt }}
+{% include "post-preview.njk" %}
 {% endfor %}
 {%- endif %}
 
@@ -46,14 +41,10 @@ Posted {{ item.data.post.publishedAt | publishedAt }}
 
 {%- set sermons = collections.sermons | reverse | pop(3) %}
 {%- if sermons %}
+
 {% for sermon in sermons %}
 
-### [{{ sermon.data.sermon.title }}]({{ sermon.url }})
+{% include "sermon-preview.njk" %}
 
-<h5>{{ sermon.data.sermon.excerpt }}</h5>
-
-{% if sermon.data.sermon.audioUrl %}<a href="{{ sermon.data.sermon.audioUrl | url }}" target="_blank">Listen</a>{% endif %} {% if sermon.data.sermon.videoUrl %}<a href="{{ sermon.data.sermon.videoUrl | url }}" target="_blank">Watch</a>{% endif %}
-
-Posted {{ sermon.data.sermon.publishedAt | publishedAt }}
 {% endfor %}
 {%- endif %}
