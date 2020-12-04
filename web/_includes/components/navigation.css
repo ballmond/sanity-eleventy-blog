@@ -95,13 +95,15 @@
     flex-basis: auto;
   }
 }
-
+.elv-nav-footer {
+  background-color: rgba(204, 204, 204, 1);
+}
 .elv-nav-header b {
   font-weight: 300;
 }
 .elv-nav-footer.lo {
-  --lo-margin-h: 0.5em;
-  --lo-margin-v: 0.25em;
+  /* --lo-margin-h: 0.5em; */
+  /* --lo-margin-v: 0.25em; */
 }
 .elv-nav-footer.lo > .lo-c {
   flex-grow: 1;
