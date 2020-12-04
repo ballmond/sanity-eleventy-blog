@@ -95,9 +95,6 @@
     flex-basis: auto;
   }
 }
-.elv-nav-footer {
-  background-color: rgba(204, 204, 204, 1);
-}
 .elv-nav-header b {
   font-weight: 300;
 }
