@@ -2,7 +2,6 @@
 layout: layouts/main.njk
 eleventyNavigation:
   key: Home
-layoutClass: elv-layout-toc
 ---
 
 # Welcome to {{ metadata.title }}

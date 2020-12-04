@@ -27,6 +27,15 @@ body {
     color: #fff;
   }
 }
+.elv-default main,
+.elv-default footer {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+.elv-default .elv-header-c {
+  max-width: 74rem;
+  margin: 0 auto;
+}
 .elv-docs main,
 .elv-docs footer {
   max-width: 76rem;

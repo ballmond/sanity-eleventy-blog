@@ -1,5 +1,5 @@
 ---
-layout: layouts/main.njk
+layout: post.njk
 eleventyNavigation:
   key: About Us
   parent: Home

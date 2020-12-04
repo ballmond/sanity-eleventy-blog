@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/main.njk
 templateClass: elv-docs
 headerClass: elv-header-default
 layoutClass: elv-layout-toc
@@ -11,21 +11,6 @@ layoutClass: elv-layout-toc
 
 {% if post.mainImage.asset %} {% include "hero.njk" %} {% endif %}
 
-{#
-<main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
-  <article>
-    <h1>{{ post.title }}</h1>
-    <p>Written by {% for author in post.authors %}{{author.name}}{% endfor %}  </p>
-    {{ post.body | markdownify | safe }}
-    <p><a href="{{ '/' | url }}">← Home</a></p>
-  </article>
-</main>
-#}
-
-<main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
-  {% include "components/toc.njk" %}
-
-  <article>
-    {{ content | safe }}
-  </article>
-</main>
+<article>
+  {{ content | safe }}
+</article>

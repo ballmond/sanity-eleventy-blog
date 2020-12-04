@@ -1,14 +1,17 @@
 ---
 layout: layouts/base.njk
-templateClass: elv-docs
+templateClass: elv-default
 headerClass: elv-header-default
+layoutClass: elv-layout-toc
 ---
 
-{% set heroImage %}
-    {% imageUrlFor metadata.heroImage %}
-{% endset %}
+{% if templateClass == "elv-default" %}
+    {% set heroImage %}
+        {% imageUrlFor metadata.heroImage %}
+    {% endset %}
 
-{% if metadata.heroImage %} {% include "hero.njk" %} {% endif %}
+    {% if metadata.heroImage %} {% include "hero.njk" %} {% endif %}
+{% endif %}
 
 {#
 {% if config.outdated -%}
@@ -40,4 +43,5 @@ headerClass: elv-header-default
     {%- endif %}
 #}
     {% include "footer-nav.njk" %}
+    {% include "jess/components/footer-nav.njk" %}
 </footer>

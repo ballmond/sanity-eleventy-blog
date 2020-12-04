@@ -1,0 +1,71 @@
+.jess-footer,
+.jess-footer > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  padding: 0 0;
+}
+.jess-footer {
+  margin-top: 0;
+  --bg-opacity: 1;
+  background-color: rgba(45, 55, 72, var(--bg-opacity));
+  justify-content: center;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+.jess-footer .jess-container {
+  width: 100%;
+}
+.jess-footer .jess-info {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.5rem 0.5rem;
+  margin-top: 0.5rem;
+}
+.jess-footer .jess-icons {
+  display: flex;
+  width: 100%;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  text-align: center;
+}
+.jess-footer p {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0;
+  color: #fff;
+}
+.jess-footer .jess-icons a {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0;
+  color: #fff;
+}
+.jess-footer .jess-icons a img {
+  width: 1rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+  border-style: solid;
+}
+.jess-footer .jess-icons a span {
+  /* padding: 0.5rem;*/
+  margin-top: 0.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
