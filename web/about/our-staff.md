@@ -20,6 +20,16 @@ Last August, Pastor David married his wife, Janet, who is a Neo-Natal Intensive 
 
 <img align="left" src="/img/rennix_brady.png" style="{{style}}"/>
 Brady is originally from Lancaster, PA, and has ministry degrees from Lancaster Bible College and Biblical Theological Seminary. He is excited to be guiding students and young adults at Grace Baptist Church as they grow in their relationship with Jesus Christ.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Casey Brookes, Director of Children and Family Ministries
 

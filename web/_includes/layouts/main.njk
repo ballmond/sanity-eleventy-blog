@@ -21,7 +21,6 @@ layoutClass: elv-layout-toc
 <div class="elv-callout elv-callout-info elv-callout-sticky">This documentation is for an upcoming version of Eleventy. Go to the <a href="https://www.11ty.dev/docs/">latest stable version of Eleventy docs</a> or check out the <a href="https://www.11ty.dev/docs/versions/">full release history.</a></div>
 {% endif -%}
 #}
-
 <main class="elv-layout{% if layoutClass %} {{ layoutClass }}{% endif %}">
     {% include "components/toc.njk" %}
 
@@ -43,6 +42,5 @@ layoutClass: elv-layout-toc
     {%- endif %}
 #}
     {% include "footer-nav.njk" %}
+    {% include "jess/components/footer-nav.njk" %}
 </footer>
-
-{% include "jess/components/footer-nav.njk" %}

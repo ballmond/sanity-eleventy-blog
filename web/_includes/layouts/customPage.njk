@@ -1,0 +1,16 @@
+---
+layout: layouts/main.njk
+templateClass: elv-docs
+headerClass: elv-header-default
+layoutClass: elv-layout-toc
+---
+
+{% set heroImage %}
+    {% imageUrlFor post.mainImage.asset %}
+{% endset %}
+
+{% if post.mainImage.asset %} {% include "hero.njk" %} {% endif %}
+
+<article>
+  {{ content | safe }}
+</article>

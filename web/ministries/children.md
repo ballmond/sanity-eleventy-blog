@@ -1,5 +1,5 @@
 ---
-layout: post.njk
+layout: /layouts/customPage.njk
 eleventyNavigation:
   key: Children
   parent: Ministries
