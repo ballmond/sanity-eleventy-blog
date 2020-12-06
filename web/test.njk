@@ -7,7 +7,7 @@ LOL
     <li>{{ group.group }}</li>
     <ol>
     {% for page in group.pages %}
-      <li><a href="/pages/{{page.slug}}">{{page.slug}}</a></li>
+      <li><a href="/pages/{% if page.static %}static/{% endif %}{{page.slug}}/">{{page.slug}}</a></li>
     {% endfor %}
     </ol>
   {% endfor %}

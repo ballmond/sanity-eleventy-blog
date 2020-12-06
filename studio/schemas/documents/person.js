@@ -22,6 +22,11 @@ export default {
       }
     },
     {
+      name: 'title',
+      type: 'string',
+      title: 'Title'
+    },
+    {
       name: 'image',
       type: 'mainImage',
       title: 'Image'
@@ -30,11 +35,6 @@ export default {
       name: 'bio',
       type: 'bioPortableText',
       title: 'Biography'
-    },
-    {
-      name: 'staff',
-      type: 'boolean',
-      title: 'Show On Staff Page'
     }
   ],
   preview: {

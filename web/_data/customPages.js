@@ -16,9 +16,7 @@ async function getPages() {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
   const filter = groq`*[_type == "page" && defined(slug) && !(static == true)]`;
   const projection = groq`{
-    sidebarLabel,
-    sidebarParent,
-    sidebarSort,
+    title,
     slug,
     mainImage,
     static,

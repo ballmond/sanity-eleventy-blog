@@ -6,27 +6,45 @@ const overlayDrafts = require("../utils/overlayDrafts");
 const hasToken = !!client.config().token;
 
 function generatePage(post) {
+  const people = post.people;
+  const t = people.map((person) => {
+    person.bio = BlocksToMarkdown(person.bio, { serializers, ...client.config() });
+  });
   return {
     ...post,
-    body: BlocksToMarkdown(post.body, { serializers, ...client.config() }),
+    ...people,
   };
 }
 
 async function getPages() {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
-  const filter = groq`*[_type == "page" && defined(slug)]`;
+  const filter = groq`*[_type == "page" && defined(slug) && static == true]`;
   const projection = groq`{
     title,
     slug,
     mainImage,
     static,
+    people[]{
+        _type == "personReference" => {
+          "title": @.person->.title,
+          "name": @.person->.name,
+          "slug": @.person->slug.current,
+          "image": @.person->image,
+          "bio": @.person->bio[]{
+            ...,
+            children[]{
+              ...
+            }
+          }
+        }
+    },
     "body": content[]{
       ...,
       children[]{
         ...
         }
       },
-      _createdAt
+    _createdAt
   }`;
   const query = [filter, projection].join(" ");
   const docs = await client.fetch(query).catch((err) => console.error(err));

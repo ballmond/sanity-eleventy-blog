@@ -32,7 +32,8 @@ async function getRoutes() {
       "group": title,
       pages[]{
         _type == "pageReference" => {
-            "slug": @.page->slug.current
+            "slug": @.page->slug.current,
+            "static": @.page->static
         }
       }
     }

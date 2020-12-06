@@ -36,6 +36,16 @@ export default {
       name: 'static',
       type: 'boolean',
       title: "Static Page (Don't change unless you know what you are doing.)"
+    },
+    {
+      name: 'people',
+      title: 'For Staff Pages',
+      type: 'array',
+      of: [
+        {
+          type: 'personReference'
+        }
+      ]
     }
   ],
   preview: {

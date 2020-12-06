@@ -1,3 +1,4 @@
+{#
 <div class="elv-toc">
 
 <details open>
@@ -5,52 +6,28 @@
 	{%- if eleventyNavigation -%}
 		{%- set navKey = eleventyNavigation.key -%}
 	{%- endif -%}
-{#	{{ collections.sidebarNav | eleventyNavigation | eleventyNavigationToHtml({ activeKey: navKey, listClass: 'elv-toc-list', activeListItemClass: 'elv-toc-active' }) | safe }} #}
-	{{ routes | eleventyNavigation | eleventyNavigationToHtml({ activeKey: navKey, listClass: 'elv-toc-list', activeListItemClass: 'elv-toc-active' }) | safe }}
+	{{ collections.sidebarNav | eleventyNavigation | eleventyNavigationToHtml({ activeKey: navKey, listClass: 'elv-toc-list', activeListItemClass: 'elv-toc-active' }) | safe }} 
 </details>
 
 {% include "components/contributeBtn.njk" %}
 
 </div>
+#}
 
-{#
 <div class="elv-toc">
-	<details open>
+  <details open>
 	<summary class="btn-primary benchnine rainbow-active rainbow-active-noanim">Menu</summary>
-	<ul>
-	{% for item in pages %}
-		<li class='elv-toc-list'><a href="/pages/{{item.slug.current}}/">{{ item.sidebarLabel}}</a></li>
+	{% for nav in routes %}
+	  <ol class="elv-toc-list">
+      {% for group in nav.navGroup %}
+        <li>{{ group.group }}</li>
+        <ol class="elv-toc-list">
+        {% for page in group.pages %}
+          <li><a href="/pages/{% if page.static %}static/{% endif %}{{page.slug}}/">{{page.slug}}</a></li>
+        {% endfor %}
+        </ol>
+      {% endfor %}
+	  </ol>
 	{% endfor %}
-	</ul>
+  </details>
 </div>
-#}
-{#
-<div class="elv-toc">
-	<details open>
-	<summary class="btn-primary benchnine rainbow-active rainbow-active-noanim">Menu</summary>
-	<nav class="l-toc v-toc__nav" aria-label="Table of Contents">
-		<a href="/"><h2 id="table-of-contents" class="u-hide-visually">
-			Home
-		</h2></a>
-		<ul>
-			<li class='elv-toc-list'>
-				<a href="#learn-the-fundamentals-and-principles-behind-accessible-design">Build basics</a>
-				<ol>
-					<li class="elv-toc-list"><a href="/pages/children/">Children</a></li>
-					<li class="elv-toc-list"><a href="/pages/student/">Student</a></li>
-				</ol>
-			</li>
-			<li class='elv-toc-list'>
-				<a href="#conduct-an-accessibility-audit">Conduct an audit</a>
-			</li>
-			<li class='elv-toc-list'>
-				<a href="#meet-the-community">Cultivate community</a>
-			</li>
-			<li class='elv-toc-list'>
-				<a href="#explore-resources">Explore resources</a>
-			</li>
-		</ul>
-	</nav>
-	</details>
-</div>
-#}
