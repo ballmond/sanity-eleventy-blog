@@ -5,44 +5,36 @@ const serializers = require("../utils/serializers");
 const overlayDrafts = require("../utils/overlayDrafts");
 const hasToken = !!client.config().token;
 
-function generatePost(post) {
+function generatePage(post) {
   return {
     ...post,
-    excerpt: BlocksToMarkdown(post.excerpt, { serializers, ...client.config() }),
     body: BlocksToMarkdown(post.body, { serializers, ...client.config() }),
   };
 }
 
-async function getPosts() {
+async function getPages() {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
-  const filter = groq`*[_type == "post" && defined(slug) && publishedAt < now()]`;
+  const filter = groq`*[_type == "page" && defined(slug) && !(static == true)]`;
   const projection = groq`{
-    _id,
-    publishedAt,
-    title,
+    sidebarLabel,
+    sidebarParent,
+    sidebarSort,
     slug,
     mainImage,
-    excerpt[],
-    body[]{
+    static,
+    "body": content[]{
       ...,
       children[]{
-        ...,
-        // Join inline reference
-        _type == "personReference" => {
-          // check /studio/documents/persons.js for more fields
-          "name": @.person->name,
-          "slug": @.person->slug
+        ...
         }
-      }
-    },
-    "persons": persons[].person->
+      },
+      _createdAt
   }`;
-  const order = `| order(publishedAt asc)`;
-  const query = [filter, projection, order].join(" ");
+  const query = [filter, projection].join(" ");
   const docs = await client.fetch(query).catch((err) => console.error(err));
   const reducedDocs = overlayDrafts(hasToken, docs);
-  const preparePosts = reducedDocs.map(generatePost);
+  const preparePosts = reducedDocs.map(generatePage);
   return preparePosts;
 }
 
-module.exports = getPosts;
+module.exports = getPages;

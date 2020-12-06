@@ -1,7 +1,10 @@
+import { MdPerson } from 'react-icons/md'
+
 export default {
-  name: 'author',
+  name: 'person',
   type: 'document',
-  title: 'Author',
+  title: 'Person',
+  icon: MdPerson,
   fields: [
     {
       name: 'name',
@@ -27,6 +30,11 @@ export default {
       name: 'bio',
       type: 'bioPortableText',
       title: 'Biography'
+    },
+    {
+      name: 'staff',
+      type: 'boolean',
+      title: 'Show On Staff Page'
     }
   ],
   preview: {

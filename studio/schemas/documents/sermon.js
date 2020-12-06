@@ -1,9 +1,11 @@
 import { format } from 'date-fns'
+import { MdMic } from 'react-icons/md'
 
 export default {
   name: 'sermon',
   type: 'document',
   title: 'Sermons',
+  icon: MdMic,
   fields: [
     {
       name: 'title',
@@ -57,7 +59,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'authorReference'
+          type: 'personReference'
         }
       ]
     },

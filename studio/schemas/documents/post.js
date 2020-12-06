@@ -1,9 +1,11 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
+import { MdLocalPostOffice } from 'react-icons/md'
 
 export default {
   name: 'post',
   type: 'document',
   title: 'Blog Post',
+  icon: MdLocalPostOffice,
   fields: [
     {
       name: 'title',
@@ -45,7 +47,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'authorReference'
+          type: 'personReference'
         }
       ]
     },
@@ -105,7 +107,7 @@ export default {
       slug: 'slug',
       media: 'mainImage'
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
+    prepare({ title = 'No title', publishedAt, slug = {}, media }) {
       const dateSegment = format(publishedAt, 'YYYY/MM')
       const path = `/${dateSegment}/${slug.current}/`
       return {

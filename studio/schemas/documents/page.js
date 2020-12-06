@@ -1,7 +1,10 @@
+import { MdBook } from 'react-icons/md'
+
 export default {
   name: 'page',
   type: 'document',
-  title: 'Page',
+  title: 'Custom Pages',
+  icon: MdBook,
   fields: [
     {
       name: 'title',
@@ -19,21 +22,6 @@ export default {
       }
     },
     {
-      name: 'sidebarLabel',
-      type: 'string',
-      title: 'Sidebar Label'
-    },
-    {
-      name: 'sidebarParent',
-      type: 'string',
-      title: 'Sidebar Parent'
-    },
-    {
-      name: 'sidebarSort',
-      type: 'number',
-      title: 'Sidebar Sort'
-    },
-    {
       name: 'mainImage',
       type: 'mainImage',
       title: 'Page Main Image',
@@ -43,6 +31,11 @@ export default {
       name: 'content',
       type: 'bodyPortableText',
       title: 'Body'
+    },
+    {
+      name: 'static',
+      type: 'boolean',
+      title: "Static Page (Don't change unless you know what you are doing.)"
     }
   ],
   preview: {

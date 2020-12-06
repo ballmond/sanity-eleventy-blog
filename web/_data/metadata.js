@@ -6,7 +6,7 @@ module.exports = async function () {
       ...,
       brandLogo->,
       heroImage->,
-      author->
+      person->
     }[0]
   `);
 };

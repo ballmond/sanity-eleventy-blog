@@ -1,0 +1,14 @@
+LOL
+{{ routes | dump }}
+
+{% for nav in routes %}
+<h1>{{ nav | dump }}</h1>
+  {% for group in nav.navGroup %}
+    <li>{{ group.group }}</li>
+    <ol>
+    {% for page in group.pages %}
+      <li><a href="/pages/{{page.slug}}">{{page.slug}}</a></li>
+    {% endfor %}
+    </ol>
+  {% endfor %}
+{% endfor %}

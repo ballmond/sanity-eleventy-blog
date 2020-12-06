@@ -8,21 +8,34 @@ const hasToken = !!client.config().token;
 function generatePage(post) {
   return {
     ...post,
-    body: BlocksToMarkdown(post.body, { serializers, ...client.config() }),
+    intro: BlocksToMarkdown(post.intro, { serializers, ...client.config() }),
+    location: BlocksToMarkdown(post.location, { serializers, ...client.config() }),
+    schedule: BlocksToMarkdown(post.schedule, { serializers, ...client.config() }),
   };
 }
 
 async function getPages() {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
-  const filter = groq`*[_type == "page" && defined(slug)]`;
+  const filter = groq`*[_type == "frontPage"][0]`;
   const projection = groq`{
-    sidebarLabel,
-    sidebarParent,
-    sidebarSort,
-    slug,
+    title,
+    subtitle,
+    mapUrl,
+    calendarUrl,
     mainImage,
-    static,
-    "body": content[]{
+    "intro": intro[]{
+      ...,
+      children[]{
+        ...
+        }
+      },
+      "location": location[]{
+      ...,
+      children[]{
+        ...
+        }
+      },
+      "schedule": schedule[]{
       ...,
       children[]{
         ...
@@ -33,7 +46,7 @@ async function getPages() {
   const query = [filter, projection].join(" ");
   const docs = await client.fetch(query).catch((err) => console.error(err));
   const reducedDocs = overlayDrafts(hasToken, docs);
-  const preparePosts = reducedDocs.map(generatePage);
+  const preparePosts = generatePage(reducedDocs);
   return preparePosts;
 }
 
